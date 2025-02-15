@@ -1,0 +1,757 @@
+/* 🌟 โทนสีเว็บไซต์ */
+body {
+    background: linear-gradient(to right, #FDF3E7, #ffffff);
+    color: #333333;
+    /*background: url("bg-l.jpg") no-repeat center center fixed; */
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    height: 100%; /* ให้ HTML และ Body สูงเต็มหน้าจอ */
+    display: flex;
+    flex-direction: column;
+}
+.banner {
+    width: 100%;  /* ให้เต็มความกว้างของเว็บ */
+    height: auto; /* ให้ปรับอัตราส่วนอัตโนมัติ */
+    display: block;
+}
+/* 🌙 Dark Mode */
+.dark-mode {
+    background: linear-gradient(to right, #2c3e50, #34495e);
+    color: #ffffff;
+    /* background: url("bg-d.jpg") no-repeat center center fixed; */
+    background-size: cover;
+}
+
+/* 🌙 Dark Mode */
+.dark-mode .container {
+    /*background: #1e1e1e; */
+    color: #f1f1f1;
+}
+
+.dark-mode .card,
+.dark-mode .contact-card {
+    background: #2c2c2c;
+    color: white;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+
+/* 🌙 Dark Mode */
+.dark-mode .col-md-4, 
+.dark-mode .col-sm-6 {
+    /*background: #1e1e1e; /* ✅ เปลี่ยนพื้นหลังเป็นสีเข้ม */
+    color: white; /* ✅ เปลี่ยนสีตัวอักษรเป็นสีขาว */
+}
+
+
+/* 🌙 Dark Mode */
+.dark-mode h1, 
+.dark-mode h2, 
+.dark-mode h3, 
+.dark-mode h4, 
+.dark-mode h5,
+.dark-mode p {
+    color: #f1f1f1; /* ✅ เปลี่ยนสีให้เป็นสีขาวใน Dark Mode */
+}
+.dark-mode h4.text-muted,
+.dark-mode .text-muted {
+    color: #cccccc !important; /* ✅ ปรับสีเทาให้สว่างขึ้นสำหรับ Dark Mode */
+}
+/* 🌙 Dark Mode */
+.dark-mode .profile-card {
+    background: #1e1e1e; /* ✅ เปลี่ยนพื้นหลังเป็นสีเข้ม */
+    color: white; /* ✅ เปลี่ยนตัวอักษรเป็นสีขาว */
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1); /* ✅ ปรับเงาให้ดูสว่างขึ้น */
+}
+.dark-mode .bmi-card,
+.dark-mode .alert {
+    background: #1e1e1e; /* ✅ เปลี่ยนพื้นหลังเป็นสีเข้ม */
+    color: white; /* ✅ เปลี่ยนตัวอักษรเป็นสีขาว */
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1); /* ✅ ปรับเงาให้ดูสว่างขึ้น */
+}
+/* 🔹 ปรับสีตัวหนังสือใน Dark Mode */
+.dark-mode .profile-name,
+.dark-mode .bio,
+.dark-mode .profile-stats div {
+    color: white;
+}
+
+/* 🔹 ปรับสีปุ่มใน Dark Mode */
+.dark-mode .btn-follow {
+    background: #ffcc00;
+    color: #333;
+}
+
+.dark-mode .btn-message {
+    background: #555;
+    color: white;
+}
+/* 🌙 Dark Mode */
+.dark-mode .table {
+    background: #252525;
+    color: white;
+}
+
+/* 🔹 ปรับส่วนหัวตาราง (table-warning) */
+.dark-mode .table-warning {
+    background: #ffcc00 !important; /* ✅ เปลี่ยนสีให้เข้ากับ Dark Mode */
+    color: #333 !important;
+}
+
+/* 🔹 ปรับขอบตารางให้เป็นสีอ่อนใน Dark Mode */
+.dark-mode .table-bordered td, 
+.dark-mode .table-bordered th {
+    border-color: #444 !important;
+}
+/* 🏵 ปุ่ม Dark Mode */
+.dark-mode-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #222;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* 🔹 Navbar */
+
+.navbar {
+    /* background-image: url('banner.png'); /* ใช้รูปพื้นหลัง */
+    background-color: #ffe4ad !important;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
+.navbar-brand img {
+    height: 100px;
+    width: auto;
+}
+
+.navbar-nav .nav-item {
+    margin: 0 3px;
+}
+
+.navbar-brand, .nav-link {
+    color: #fff !important;
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+.dropdown-menu {
+    background-color: #ffd1b3;
+    border: none;
+    border-radius: 10px;
+}
+
+.dropdown-item:hover {
+    background-color: #ff7e5f;
+    color: #fff;
+}
+
+/* 🔹 Navbar รองรับ Dark Mode */
+.dark-mode .navbar {
+    background-color: #222 !important;
+}
+
+.dark-mode .dropdown-menu {
+    background-color: #333;
+}
+
+.dark-mode .dropdown-item {
+    color: #fff;
+}
+
+.dark-mode .dropdown-item:hover {
+    background-color: #555;
+}
+
+/* 🌙 ปุ่ม Toggle Dark Mode */
+.dark-mode-toggle {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* 🎡 Carousel */
+#foodCarousel {
+    margin-top: 1px; /* ให้ Carousel ขยับลงมาเลี่ยง Navbar */
+    width: 100vw;
+    max-width: 100%;
+}
+/* 🔹 เว้นระยะให้ Carousel ไม่โดน Navbar ทับ */
+.carousel-container {
+    margin-top: 70px; /* ปรับให้ Carousel ขยับลงมา */
+}
+.carousel-item img {
+    width: 100%; /* ให้รูปภาพเต็มความกว้างของ Carousel */
+    height: 400px; /* ป้องกันการบีบรูป */
+    object-fit: cover;
+}
+
+/* 🎛 ปรับปุ่มควบคุมของ Carousel */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+}
+
+/* 🔹 ปุ่ม Back to Top */
+#backToTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none; /* ซ่อนปุ่มไว้ก่อน */
+    background-color: #ff7e5f;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#backToTopBtn:hover {
+    background-color: #ff6333;
+    transform: scale(1.1);
+}
+
+/* รองรับ Dark Mode */
+.dark-mode #backToTopBtn {
+    background-color: #444;
+}
+
+.dark-mode #backToTopBtn:hover {
+    background-color: #666;
+}
+#darkModeToggle {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+    background: #f4a261;
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex; /* ใช้ flexbox จัดไอคอนให้อยู่ตรงกลาง */
+    align-items: center; /* จัดให้อยู่ตรงกลางแนวตั้ง */
+    justify-content: center; /* จัดให้อยู่ตรงกลางแนวนอน */
+    font-size: 24px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+/* เพิ่มเอฟเฟกต์เมื่อ Hover */
+#darkModeToggle:hover {
+    background: #e76f51;
+    transform: scale(1.1);
+}
+
+/* 🔹 ปรับ Navbar Menu */
+.navbar-nav .nav-link {
+    font-size: 25px;
+    background-color: rgba(255, 255, 255, 0.4);
+	color: #000 !important;
+    padding: 12px 25px; /* เพิ่ม Padding ให้ขนาดใกล้เคียงกัน */
+    border-radius: 10px;
+    min-width: 120px; /* กำหนดความกว้างขั้นต่ำของปุ่ม */
+    text-align: center; /* จัดให้ตัวอักษรอยู่ตรงกลาง */
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+    color: #000 !important;
+}
+
+.dark-mode .navbar-nav .nav-link {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #fff !important;
+}
+
+.dark-mode .navbar-nav .nav-link:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* 📊 BMI Calculator */
+.container {
+    /*background-color: #ffe4ad; */
+    width: 100%;
+    max-width: auto;
+    margin: auto;
+    padding: 20px;
+}
+
+.card {
+    width: 100%;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    background: white;
+    max-width: auto;
+    margin: auto;
+}
+
+/* 🖼 รูปภาพใน Card */
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.card-body {
+    text-align: center;
+}
+
+/* 🔹 หัวข้อ */
+h2 {
+    font-weight: bold;
+    color: #333;
+}
+
+/* 🔹 ปรับขนาด Input */
+input {
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+}
+
+/* 🎛 ปุ่ม */
+button {
+    background: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* 🔹 สไตล์ของผลลัพธ์ BMI */
+h3, h4 {
+    margin-top: 10px;
+}
+
+#bmiResult {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ff5733;
+}
+
+#bmiCategory {
+    font-size: 18px;
+    font-weight: bold;
+    color: #17a2b8;
+}
+
+#weightSuggestion {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff9f1c;
+}
+
+#calorieIntake {
+    font-size: 18px;
+    font-weight: bold;
+    color: #28a745;
+}
+
+/* 📱 รองรับมือถือ */
+@media (max-width: 768px) {
+    .container {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    .card {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .carousel-item img {
+        height: 50vh;
+    }
+}
+/* =========================== */
+/* 🔹 Footer (สีส้ม) */
+/* =========================== */
+.footer {
+    background-color: #4CAF50; /* สีส้ม */
+    color: white;
+    padding: 3px 0; /* ปรับ padding ด้านล่างให้ไม่มีช่องว่าง */
+    margin: 0; /* กำจัด margin ที่อาจเกิดขึ้น */
+    text-align: left;
+}
+
+.footer h5 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.footer p {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+/* 🔹 จัดกลุ่มลิงก์ */
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 5px;
+}
+
+.footer-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-links li a:hover {
+    text-decoration: underline;
+    color: #ffebc9;
+}
+
+/* 🔹 ส่วนล่างของ Footer */
+.footer-bottom {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 0; /* ป้องกันช่องว่างด้านล่าง */
+    margin-bottom: 0; /* ลบ margin ด้านล่าง */
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 14px;
+}
+
+
+/* 🔹 รองรับ Dark Mode */
+.dark-mode footer {
+    background-color: #222;
+    color: #fff;
+}
+
+/* 📱 Responsive Footer สำหรับมือถือ */
+@media (max-width: 768px) {
+    footer {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+.modal {
+    z-index: 1050 !important;
+}
+
+.modal-backdrop {
+    z-index: 1040 !important;
+}
+/****************************************************************************************กล่องล็อคอิน********************************************************************************************************************/
+/* 🔹 ปรับสีปุ่มเข้าสู่ระบบ */
+#signInBtn {
+    background: linear-gradient(to right, #ff7e5f, #feb47b) !important; /* ไล่สีส้มแดง */
+    color: white !important; /* เปลี่ยนสีตัวอักษร */
+    font-weight: bold !important; /* ทำให้ตัวอักษรหนา */
+    border: none !important;
+    padding: 12px 20px !important;
+    border-radius: 8px !important;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2) !important; /* เพิ่มเงา */
+    transition: all 0.3s ease-in-out !important;
+}
+
+/* 🎯 เอฟเฟกต์ Hover */
+#signInBtn:hover {
+    background: linear-gradient(to right, #ff6333, #ff3d00) !important; /* ไล่สีให้เข้มขึ้น */
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3) !important; /* เงาชัดขึ้น */
+    transform: scale(1.05) !important; /* ขยายเล็กน้อย */
+}
+
+/* 🔹 ปรับสีปุ่มออกจากระบบ */
+#signOutBtn {
+    background: linear-gradient(to right, #ff4b5c, #ff2a3a) !important; /* ไล่สีแดง */
+    color: white !important;
+    font-weight: bold !important;
+    border: none !important;
+    padding: 12px 20px !important;
+    border-radius: 8px !important;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2) !important;
+    transition: all 0.3s ease-in-out !important;
+}
+
+/* 🎯 เอฟเฟกต์ Hover */
+#signOutBtn:hover {
+    background: linear-gradient(to right, #cc0000, #990000) !important;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3) !important;
+    transform: scale(1.05) !important;
+}
+
+
+/* ปรับแต่ง Modal */
+.modal-content {
+    position: relative;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+}
+/* เอฟเฟกต์แสดง Modal */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ส่วน Header ของ Modal */
+.modal-header {
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    color: white;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+/* ปรับแต่งปุ่มปิด */
+.modal-header .btn-close {
+    filter: invert(1);
+}
+
+/* 🔹 ปรับปุ่ม Login */
+.btn-login {
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    color: white;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.btn-login:hover {
+    background: linear-gradient(to right, #feb47b, #ff7e5f);
+}
+
+/* ช่องกรอกข้อมูล */
+.form-control {
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    transition: 0.3s;
+}
+
+.form-control:focus {
+    border-color: #ff7e5f;
+    box-shadow: 0 0 8px rgba(255, 126, 95, 0.5);
+}
+
+
+/*************************************************** ปุ่มโซเชียลมีเดีย **********************************************************/
+/* 🌍 Floating Social Buttons */
+.floating-social {
+    position: fixed;
+    left: 35px;
+    bottom: 150px; /* ✅ เพิ่มระยะห่างจากปุ่ม Back to Top */
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 999;
+}
+
+/* 🎨 ปรับแต่งปุ่ม */
+.social-btn {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    color: white;
+    font-size: 22px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 🎭 สีของแต่ละปุ่ม */
+.messenger { background-color: #0084FF; }
+.facebook { background-color: #1877F2; }
+.line { background-color: #06C755; }
+.call { background-color: #6C63FF; }
+.profile { background-color: #FFD43B; }
+.close-btn { background-color: #FF3B3B; }
+
+/* 🔥 Hover Effect */
+.social-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* 🎛 ปุ่ม Toggle Social */
+.toggle-social {
+    position: fixed;
+    bottom: 75px;
+    left: 35px;
+    width: 50px; /* ✅ ปรับขนาด */
+    height: 50px;
+    border-radius: 50%; /* ✅ ทำให้เป็นวงกลม */
+    display: flex;
+    align-items: center;  /* ✅ จัดให้อีโมจิอยู่ตรงกลางแนวตั้ง */
+    justify-content: center; /* ✅ จัดให้อีโมจิอยู่ตรงกลางแนวนอน */
+    font-size: 24px; /* ✅ ปรับขนาดอีโมจิ */
+    cursor: pointer;
+    border: none;
+    background-color: #f4a261; /* ✅ สีปุ่ม */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* ✅ ใส่เงาให้ดูมีมิติ */
+    transition: transform 0.2s, background 0.3s;
+}
+
+/* เอฟเฟกต์ Hover ให้ปุ่ม Toggle */
+.toggle-social:hover {
+    background: #E67E22;
+    transform: scale(1.1);
+}
+
+/**************************************************************ปุ่มแชทบอท*******************************************************************/
+/* 💬 ปุ่มเปิดแชท */
+.chat-toggle {
+    position: fixed;
+    bottom: 75px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;  /* ✅ จัดให้อีโมจิอยู่ตรงกลางแนวตั้ง */
+    justify-content: center; /* ✅ จัดให้อีโมจิอยู่ตรงกลางแนวนอน */
+    background: #f4a261;
+    border-radius: 50%;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.chat-toggle:hover {
+    background: #e76f51;
+    transform: scale(1.1);
+}
+
+/* 📦 กล่องแชท */
+.chat-container {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 300px;
+    background: #222;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: none;
+    flex-direction: column;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* 🔹 หัวข้อแชท */
+.chat-header {
+    background: #f4a261;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-chat {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* 💬 เนื้อหาแชท */
+.chat-body {
+    padding: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 📩 ข้อความของบอท */
+.bot-message {
+    background: #ffcc80;
+    padding: 8px 12px;
+    border-radius: 15px;
+    color: #333;
+    max-width: 80%;
+    margin-bottom: 10px;
+}
+
+/* 📝 กล่องส่งข้อความ */
+.chat-footer {
+    display: flex;
+    padding: 10px;
+    background: #333;
+    border-radius: 0 0 10px 10px;
+}
+
+.chat-footer input {
+    flex: 1;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+.chat-footer button {
+    background: #f4a261;
+    border: none;
+    padding: 8px;
+    margin-left: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.chat-footer button:hover {
+    background: #e76f51;
+}
+
+/* 🎬 เอฟเฟกต์ Fade In */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

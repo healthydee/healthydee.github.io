@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ติดต่อเรา | Healthy Diary</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="style.css"> <!-- ไฟล์ CSS หลักของเรา -->
+	<style>
+	</style>
+</head>
+<body>
+    <header>
+        <img src="bannerr.jpg" alt="Healthy Diary Banner" class="banner">
+    </header>
+    <!-- 🔹 Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top bg-light">
+        <div class="container-fluid">
+            <!--<a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="Foodie Delight Logo">
+            </a>-->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html">หน้าแรก</a></li>
+                    <li class="nav-item"><a class="nav-link" href="aboutwe.html">เกี่ยวกับ เรา</a></li>                 
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">สูตรอาหารสุขภาพ</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">สำหรับต้องการลดน้ำหนัก</a></li>
+                            <li><a class="dropdown-item" href="#">สำหรับต้องการเพิ่มน้ำหนัก</a></li>
+                            <li><a class="dropdown-item" href="#">สำหรับผู้สูงอายุ</a></li>
+                            <li><a class="dropdown-item" href="#">บำรุงผิว</a></li>
+                        </ul>
+                    </li>
+					<li class="nav-item"><a class="nav-link" href="contact.html">ติดต่อเรา</a></li>
+                    <!-- เมนูคำนวณ BMI (แสดงเมื่อผู้ใช้ล็อกอิน) -->
+                    <li class="nav-item" id="bmiMenu" style="display: none;">
+                        <a class="nav-link" href="bmi-cal.html">คำนวณ BMI</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- ปุ่ม Sign In / Sign Out -->
+            <div class="d-flex">
+                <button id="signInBtn" data-bs-toggle="modal" data-bs-target="#loginModal">เข้าสู่ระบบ</button>
+                <button id="signOutBtn" style="display: none;">ออกจากระบบ</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 🔹 Modal สำหรับล็อกอิน -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">เข้าสู่ระบบ</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" placeholder="กรอกชื่อผู้ใช้" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="กรอกรหัสผ่าน" required>
+                        </div>
+                        <button type="submit" class="btn btn-login w-100">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🔹 ปุ่ม Dark Mode -->
+    <button id="darkModeToggle" class="dark-mode-toggle ms-3">🌙</button>
+
+    <!------------------------------------------------- 🏡 ใส่เนื้อหาในนี้ -------------------------------------------------------------------->
+    <!------------------------------------------------- 🏡 ใส่เนื้อหาในนี้ -------------------------------------------------------------------->
+ 
+
+<!-- 🔹 Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <!-- 🔹 คอลัมน์ที่ 1: เกี่ยวกับเรา -->
+            <div class="col-md-4">
+                <h5>งานกลุ่มเขียนเว็ป</h5>
+                <p>Rajamangala University of Technology Thanyaburi </p>
+				<p>ที่อยู่ : 39 หมู่ที่ 1 ตำบลคลองหก อำเภอคลองหลวง จังหวัดปทุมธานี 12120</p>
+            </div>
+
+            <!-- 🔹 คอลัมน์ที่ 2: ลิงก์ที่เกี่ยวข้อง -->
+            <div class="col-md-4">
+                <h5>เมนู</h5>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div>
+
+            <!-- 🔹 คอลัมน์ที่ 3: ติดต่อเรา -->
+            <div class="col-md-4">
+                <h5>ติดต่อเรา</h5>
+                <p>Tel: 081-259-3340</p>
+                <p>Email: <a href="mailto:info@website.com">info@website.com</a></p>
+                <p>Facebook: <a href="#">Our Facebook Page</a></p>
+            </div>
+        </div>
+
+        <!-- 🔹 Copyright -->
+        <div class="footer-bottom">
+            <p>© 2025 Website Name. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+<!-- Floating Button to Toggle Social Buttons -->
+<button class="toggle-social" onclick="toggleSocialButtons()">💼</button>
+
+<!-- Floating Social Media Buttons (Initially Hidden) -->
+<div class="floating-social" id="socialButtons">
+    <a href="https://m.me/YOUR_PAGE" target="_blank" class="social-btn messenger"><i class="bi bi-messenger"></i></a>
+    <a href="https://www.facebook.com/YOUR_PAGE" target="_blank" class="social-btn facebook"><i class="bi bi-facebook"></i></a>
+    <a href="https://line.me/R/YOUR_LINE_ID" target="_blank" class="social-btn line"><i class="bi bi-line"></i></a>
+    <a href="tel:0812345678" class="social-btn call"><i class="bi bi-telephone"></i></a>
+    <a href="contact.html" class="social-btn profile"><i class="bi bi-person-circle"></i></a>
+    <a href="#" class="social-btn close-btn" onclick="toggleSocialButtons()"><i class="bi bi-x-circle"></i></a>
+</div>
+    <!-- 🔹 ปุ่มกลับไปด้านบน -->
+    <button onclick="scrollToTop()" id="backToTopBtn" class="btn btn-primary"><i class="bi bi-arrow-up"></i></button>
+
+    <!-- 🔹 รวม JavaScript -->
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+</body>
+</html>

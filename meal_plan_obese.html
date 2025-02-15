@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📅 ตารางอาหาร 7 วัน (สำหรับคนสุขภาพดี) | Meal Plan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+	<link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Athiti:wght@200;300;400;500;600;700&family=Itim&family=Mitr:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+        .mitr-extralight {
+          font-family: "Mitr", serif;
+          font-weight: 200;
+          font-style: normal;
+        }
+        .athiti-extralight {
+          font-family: "Athiti", serif;
+          font-weight: 200;
+          font-style: normal;
+        }
+        body {
+            font-family: 'Mitr', sans-serif;
+        }
+        h4 {
+            font-family: 'Athiti', sans-serif;
+            font-size: 20px;
+        }
+</style>
+</head>
+<body>
+    <header>
+        <img src="bannerr.jpg" alt="Healthy Diary Banner" class="banner">
+    </header>
+    <!-- 🔹 Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top bg-light">
+        <div class="container-fluid">
+            <!--<a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="Foodie Delight Logo">
+            </a>-->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html">หน้าแรก</a></li>
+                    <li class="nav-item"><a class="nav-link" href="aboutwe.html">เกี่ยวกับ เรา</a></li>                 
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">สูตรอาหารสุขภาพ</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">สำหรับต้องการลดน้ำหนัก</a></li>
+                            <li><a class="dropdown-item" href="#">สำหรับต้องการเพิ่มน้ำหนัก</a></li>
+                            <li><a class="dropdown-item" href="#">สำหรับผู้สูงอายุ</a></li>
+                            <li><a class="dropdown-item" href="#">บำรุงผิว</a></li>
+                        </ul>
+                    </li>
+					<li class="nav-item"><a class="nav-link" href="contact.html">ติดต่อเรา</a></li>
+                    <!-- เมนูคำนวณ BMI (แสดงเมื่อผู้ใช้ล็อกอิน) -->
+                    <li class="nav-item" id="bmiMenu" style="display: none;">
+                        <a class="nav-link" href="bmi-cal.html">คำนวณ BMI</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- ปุ่ม Sign In / Sign Out -->
+            <div class="d-flex">
+                <button id="signInBtn" data-bs-toggle="modal" data-bs-target="#loginModal">เข้าสู่ระบบ</button>
+                <button id="signOutBtn" style="display: none;">ออกจากระบบ</button>
+            </div>
+        </div>
+    </nav>
+    <!-- 🔹 Modal สำหรับล็อกอิน -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">เข้าสู่ระบบ</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" placeholder="กรอกชื่อผู้ใช้" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="กรอกรหัสผ่าน" required>
+                        </div>
+                        <button type="submit" class="btn btn-login w-100">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🔹 ปุ่ม Dark Mode -->
+    <button id="darkModeToggle" class="dark-mode-toggle ms-3">🌙</button>
+
+
+    <div class="container text-center">
+        <h1 class="mt-3">📅 ตารางอาหาร 7 วัน</h1>
+        <h4 class="text-muted">สำหรับผู้ที่มีน้ำหนักเกินมาก (อ้วน) ⚠️</h4>
+
+        <!-- แสดงเป้าหมายแคลอรี่ -->
+        <div class="alert alert-danger mt-3">
+            <h5>🎯 เป้าหมายแคลอรี่ต่อวัน: <strong>1200 kcal</strong></h5>
+            <p>🍳 มื้อเช้า: <strong>350 kcal</strong> | 🍛 มื้อกลางวัน: <strong>500 kcal</strong> | 🥦 มื้อเย็น: <strong>350 kcal</strong></p>
+        </div>
+
+        <div class="card p-4 mt-4">
+            <h3 class="text-center">🥗 เมนูอาหารที่แนะนำ</h3>
+            <div class="table-responsive">
+                <table class="table table-bordered mt-3">
+                    <thead class="table-danger">
+                        <tr>
+                            <th>วัน</th>
+                            <th>มื้อเช้า 🍳</th>
+                            <th>มื้อกลางวัน 🍛</th>
+                            <th>มื้อเย็น 🥦</th>
+                            <th>รวม 🔥</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>จันทร์</td>
+                            <td>โยเกิร์ตไขมันต่ำ + กราโนล่า (350 kcal)</td>
+                            <td>ข้าวกล้อง + อกไก่ย่าง + ผักนึ่ง (500 kcal)</td>
+                            <td>สลัดผัก + ไข่ต้ม (350 kcal)</td>
+                            <td><strong>1200 kcal</strong></td>
+                        </tr>
+                        <tr>
+                            <td>อังคาร</td>
+                            <td>สมูทตี้โปรตีน + ข้าวโอ๊ต (350 kcal)</td>
+                            <td>สลัดไก่ + ซุปผัก (500 kcal)</td>
+                            <td>ซุปเต้าหู้ + อกไก่ย่าง (350 kcal)</td>
+                            <td><strong>1200 kcal</strong></td>
+                        </tr>
+                        <tr>
+                            <td>พุธ</td>
+                            <td>ขนมปังโฮลวีต + อะโวคาโด + ไข่ต้ม (350 kcal)</td>
+                            <td>ข้าวไรซ์เบอร์รี่ + ต้มยำไก่ไม่ใส่กะทิ (500 kcal)</td>
+                            <td>ปลานึ่ง + ผักต้ม (350 kcal)</td>
+                            <td><strong>1200 kcal</strong></td>
+                        </tr>
+                        <tr>
+                            <td>พฤหัสบดี</td>
+                            <td>โจ๊กข้าวกล้อง + ไข่ลวก (350 kcal)</td>
+                            <td>ข้าวกล้อง + ผัดผักรวม + ไข่เจียว (500 kcal)</td>
+                            <td>ซุปเห็ด + สลัดไข่ต้ม (350 kcal)</td>
+                            <td><strong>1200 kcal</strong></td>
+                        </tr>
+                        <tr>
+                            <td>ศุกร์</td>
+                            <td>แพนเค้กโฮลวีต + น้ำผึ้ง (350 kcal)</td>
+                            <td>ข้าวกล้อง + ลาบไก่ + ผักสด (500 kcal)</td>
+                            <td>ซุปไก่ + ผักลวก (350 kcal)</td>
+                            <td><strong>1200 kcal</strong></td>
+                        </tr>
+                        <tr>
+                            <td>เสาร์</td>
+                            <td>นมอัลมอนด์ + กล้วย (350 kcal)</td>
+                            <td>ข้าวกล้อง + แกงส้มผักรวม (500 kcal)</td>
+                            <td>สเต็กปลา + สลัดผัก (350 kcal)</td>
+                            <td><strong>1200 kcal</strong></td>
+                        </tr>
+                        <tr>
+                            <td>อาทิตย์</td>
+                            <td>สมูทตี้ผลไม้ + เมล็ดเจีย (350 kcal)</td>
+                            <td>ข้าวกล้อง + อกไก่นึ่ง + ผักสด (500 kcal)</td>
+                            <td>ซุปมิโสะ + เต้าหู้ย่าง (350 kcal)</td>
+                            <td><strong>1200 kcal</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    <a href="index.html" class="btn btn-secondary mt-4">🏠 กลับไปหน้าหลัก</a>
+</div>
+
+<!-- 🔹 Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <!-- 🔹 คอลัมน์ที่ 1: เกี่ยวกับเรา -->
+            <div class="col-md-4">
+                <h5>งานกลุ่มเขียนเว็ป</h5>
+                <p>Rajamangala University of Technology Thanyaburi </p>
+				<p>ที่อยู่ : 39 หมู่ที่ 1 ตำบลคลองหก อำเภอคลองหลวง จังหวัดปทุมธานี 12120</p>
+            </div>
+
+            <!-- 🔹 คอลัมน์ที่ 2: ลิงก์ที่เกี่ยวข้อง -->
+            <div class="col-md-4">
+                <h5>เมนู</h5>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div>
+
+            <!-- 🔹 คอลัมน์ที่ 3: ติดต่อเรา -->
+            <div class="col-md-4">
+                <h5>ติดต่อเรา</h5>
+                <p>Tel: 081-259-3340</p>
+                <p>Email: <a href="mailto:info@website.com">info@website.com</a></p>
+                <p>Facebook: <a href="#">Our Facebook Page</a></p>
+            </div>
+        </div>
+
+        <!-- 🔹 Copyright -->
+        <div class="footer-bottom">
+            <p>© 2025 Website Name. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+
+
+    <!-- 🔹 ปุ่มกลับไปด้านบน -->
+    <button onclick="scrollToTop()" id="backToTopBtn" class="btn btn-primary"><i class="bi bi-arrow-up"></i></button>
+
+    <!-- 🔹 รวม JavaScript -->
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthy Diary</title>
+    
+    <!-- CSS Frameworks -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="style.css"> <!-- ไฟล์ CSS หลักของเรา -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Athiti:wght@200;300;400;500;600;700&family=Itim&family=Mitr:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+.mitr-extralight {
+  font-family: "Mitr", serif;
+  font-weight: 200;
+  font-style: normal;
+}
+.athiti-extralight {
+  font-family: "Athiti", serif;
+  font-weight: 200;
+  font-style: normal;
+}
+body {
+    font-family: 'Mitr', sans-serif;
+}
+h4 {
+    font-family: 'Athiti', sans-serif;
+    font-size: 20px;
+}
+    /* 🎯 กำหนดสถานะเริ่มต้นของการ์ด */
+.card {
+    opacity: 0; /* ซ่อนก่อน */
+    transform: translateX(50px); /* เริ่มต้นเลื่อนออกไปขวา */
+    transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+}
+
+/* 🌟 เมื่อการ์ดเข้ามาในหน้าจอ */
+.card.show {
+    opacity: 1; /* แสดงการ์ด */
+    transform: translateX(0); /* ขยับกลับมา */
+}
+/* 🌍 Floating Social Buttons */
+.floating-social {
+    position: fixed;
+    right: 20px;
+    bottom: 150px; /* ✅ เพิ่มระยะห่างจากปุ่ม Back to Top */
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 999;
+}
+
+/* 🎨 ปรับแต่งปุ่ม */
+.social-btn {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    color: white;
+    font-size: 22px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 🎭 สีของแต่ละปุ่ม */
+.messenger { background-color: #0084FF; }
+.facebook { background-color: #1877F2; }
+.line { background-color: #06C755; }
+.call { background-color: #6C63FF; }
+.profile { background-color: #FFD43B; }
+.close-btn { background-color: #FF3B3B; }
+
+/* 🔥 Hover Effect */
+.social-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* 🎛 ปุ่ม Toggle Social */
+.toggle-social {
+    position: fixed;
+    bottom: 75px;
+    right: 20px;
+    width: 50px; /* ✅ ปรับขนาด */
+    height: 50px;
+    border-radius: 50%; /* ✅ ทำให้เป็นวงกลม */
+    display: flex;
+    align-items: center;  /* ✅ จัดให้อีโมจิอยู่ตรงกลางแนวตั้ง */
+    justify-content: center; /* ✅ จัดให้อีโมจิอยู่ตรงกลางแนวนอน */
+    font-size: 24px; /* ✅ ปรับขนาดอีโมจิ */
+    cursor: pointer;
+    border: none;
+    background-color: #f4a261; /* ✅ สีปุ่ม */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* ✅ ใส่เงาให้ดูมีมิติ */
+    transition: transform 0.2s, background 0.3s;
+}
+
+/* เอฟเฟกต์ Hover ให้ปุ่ม Toggle */
+.toggle-social:hover {
+    background: #E67E22;
+    transform: scale(1.1);
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <img src="bannerr.jpg" alt="Healthy Diary Banner" class="banner">
+    </header>
+    <!-- 🔹 Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top bg-light">
+        <div class="container-fluid">
+            <!--<a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="Foodie Delight Logo">
+            </a>-->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html">หน้าแรก</a></li>
+                    <li class="nav-item"><a class="nav-link" href="aboutwe.html">เกี่ยวกับ เรา</a></li>                 
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">สูตรอาหารสุขภาพ</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">สำหรับต้องการลดน้ำหนัก</a></li>
+                            <li><a class="dropdown-item" href="#">สำหรับต้องการเพิ่มน้ำหนัก</a></li>
+                            <li><a class="dropdown-item" href="#">สำหรับผู้สูงอายุ</a></li>
+                            <li><a class="dropdown-item" href="#">บำรุงผิว</a></li>
+                        </ul>
+                    </li>
+					<li class="nav-item"><a class="nav-link" href="contact.html">ติดต่อเรา</a></li>
+                    <!-- เมนูคำนวณ BMI (แสดงเมื่อผู้ใช้ล็อกอิน) -->
+                    <li class="nav-item" id="bmiMenu" style="display: none;">
+                        <a class="nav-link" href="bmi-cal.html">คำนวณ BMI</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- ปุ่ม Sign In / Sign Out -->
+            <div class="d-flex">
+                <button id="signInBtn" data-bs-toggle="modal" data-bs-target="#loginModal">เข้าสู่ระบบ</button>
+                <button id="signOutBtn" style="display: none;">ออกจากระบบ</button>
+            </div>
+        </div>
+    </nav>
+
+<!-- Modal สำหรับล็อกอิน -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Header ของ Modal -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">เข้าสู่ระบบ</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- Body ของ Modal -->
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" placeholder="กรอกชื่อผู้ใช้" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="กรอกรหัสผ่าน" required>
+                    </div>
+                    <button type="submit" class="btn btn-login w-100">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- 🔹 ปุ่ม Dark Mode -->
+    <button id="darkModeToggle" class="dark-mode-toggle ms-3">🌙</button>
+
+    <!-- 🔹 Carousel Section -->
+    <div id="foodCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active"><img src="slide1.png" class="d-block w-100" alt="อาหารจานแรก"></div>
+            <div class="carousel-item"><img src="slide2.png" class="d-block w-100" alt="อาหารจานที่สอง"></div>
+            <div class="carousel-item"><img src="slide3.png" class="d-block w-100" alt="อาหารจานที่สาม"></div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#foodCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#foodCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+        
+    </div>
+
+<div class="container mt-2">
+    
+<div class="card p-4 shadow-lg">
+<h1 class="text-center mb-4">🌿 <strong>สุขภาพดีเริ่มต้นจากโภชนาการที่ดี</strong></h1>
+<h4>
+<p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ที่ <strong>Healthy Diary</strong> เราเชื่อว่าการมีสุขภาพที่ดีเริ่มต้นจากการรับประทานอาหารที่สมดุลและเหมาะสมกับร่างกายของคุณ  
+เรามุ่งมั่นในการให้คำแนะนำเกี่ยวกับโภชนาการที่เหมาะสมกับทุกช่วงวัย  
+ไม่ว่าคุณจะต้องการควบคุมน้ำหนัก เสริมสร้างสุขภาพ หรือปรับการกินให้เหมาะกับไลฟ์สไตล์  
+เราพร้อมเป็นเพื่อนคู่คิดที่จะช่วยให้คุณมีสุขภาพดีขึ้นทุกวัน  
+</p>
+
+<p>
+🥗 <strong>โภชนาการที่สมดุล</strong> - เรานำเสนอข้อมูลเกี่ยวกับอาหารที่ดีต่อสุขภาพ<br>
+📊 <strong>เครื่องมือช่วยคำนวณสุขภาพ</strong> - ระบบคำนวณ BMI และปริมาณแคลอรี่ที่คุณต้องการ <strong>(ทำการเข้าสู่ระบบเพื่อใช้งานฟังก์ชั่น)</strong><br>    
+💪 <strong>ไลฟ์สไตล์เพื่อสุขภาพ</strong> - แนะนำการจัดตารางการกินที่เหมาะสมกับร่างกายของแต่ละคน เพื่อนำไปสู่สุขภาพที่ดีของท่าน
+</p>
+
+<p>
+ไม่ว่าคุณจะเป็นใคร อยู่ที่ไหน สุขภาพที่ดีเริ่มต้นได้จากสิ่งเล็ก ๆ ในแต่ละวัน  
+มาเปลี่ยนแปลงตัวเองไปด้วยกัน กับ <strong>Healthy Diary</strong> ✨
+</p>
+</h4>
+
+</div>
+</div>    
+    <!-- 🔹 บทความแนะนำ -->
+<!-- 🔹 บทความแนะนำ สุขภาพ -->
+<div class="container mt-2">
+    <h2 class="text-center">บทความแนะนำเกี่ยวกับสุขภาพ</h2>
+    <div class="row mt-4">
+        
+        <!-- บทความที่ 1 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img src="new1.jpg" class="card-img-top" alt="อาหารเพื่อสุขภาพ">
+                <div class="card-body text-center">
+                    <h5 class="card-title">ชวนวิ่งบนสายพาน อยู่ในบ้านก็ฟิตได้</h5>
+                    <p class="card-text">ก่อนอื่นเราต้องมาทำความกับลู่วิ่งสายพานในบ้าน...</p>
+                    <a href="page1.html" class="btn btn-primary">อ่านเพิ่มเติม</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- บทความที่ 2 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img src="new2.jpg" class="card-img-top" alt="อาหารคีโต">
+                <div class="card-body text-center">
+                    <h5 class="card-title">ฝึกกินอย่างมีสติ</h5>
+                    <p class="card-text">การลดน้ำหนักเป็นเรื่องของการปรับเปลี่ยนวิธีคิด...</p>
+                    <a href="article2.html" class="btn btn-primary">อ่านเพิ่มเติม</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- บทความที่ 3 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img src="new3.jpg" class="card-img-top" alt="เมนูง่ายๆ">
+                <div class="card-body text-center">
+                    <h5 class="card-title">เคล็ดลับการกินให้สุขถาพดิ๊ดี</h5>
+                    <p class="card-text">อิทธิพลอาหารเกาหลีในช่วงหลายสิบปีที่ผ่านมา...</p>
+                    <a href="article3.html" class="btn btn-primary">อ่านเพิ่มเติม</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+	
+<!-- 🔹 บทความแนะนำ อาหาร -->
+<div class="container mt-2">
+    <h2 class="text-center">บทความแนะนำเกี่ยวกับอาหาร</h2>
+    <div class="row mt-4">
+        
+        <!-- บทความที่ 1 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img src="pic1.jpg" class="card-img-top" alt="อาหารเพื่อสุขภาพ">
+                <div class="card-body text-center">
+                    <h5 class="card-title">5 เมนูเพื่อสุขภาพที่ควรกิน</h5>
+                    <p class="card-text">แนะนำเมนูอาหารเพื่อสุขภาพที่อร่อยและดีต่อร่างกาย...</p>
+                    <a href="page1.html" class="btn btn-primary">อ่านเพิ่มเติม</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- บทความที่ 2 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img src="pic2.jpg" class="card-img-top" alt="อาหารคีโต">
+                <div class="card-body text-center">
+                    <h5 class="card-title">อาหารคีโตที่ควรรู้จัก</h5>
+                    <p class="card-text">ไขมันดี คาร์โบไฮเดรตต่ำ อาหารคีโตเหมาะกับใครบ้าง...</p>
+                    <a href="article2.html" class="btn btn-primary">อ่านเพิ่มเติม</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- บทความที่ 3 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img src="pic3.jpg" class="card-img-top" alt="เมนูง่ายๆ">
+                <div class="card-body text-center">
+                    <h5 class="card-title">เมนูง่ายๆ ทำเองได้ที่บ้าน</h5>
+                    <p class="card-text">แชร์ไอเดียเมนูง่ายๆ ที่ทำได้เอง ไม่ต้องเป็นเชฟมือโปร...</p>
+                    <a href="article3.html" class="btn btn-primary">อ่านเพิ่มเติม</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- 🔹 Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <!-- 🔹 คอลัมน์ที่ 1: เกี่ยวกับเรา -->
+            <div class="col-md-4">
+                <h5>งานกลุ่มเขียนเว็ป</h5>
+                <p>Rajamangala University of Technology Thanyaburi </p>
+				<p>ที่อยู่ : 39 หมู่ที่ 1 ตำบลคลองหก อำเภอคลองหลวง จังหวัดปทุมธานี 12120</p>
+            </div>
+
+            <!-- 🔹 คอลัมน์ที่ 2: ลิงก์ที่เกี่ยวข้อง -->
+            <div class="col-md-4">
+                <h5>เมนู</h5>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div>
+
+            <!-- 🔹 คอลัมน์ที่ 3: ติดต่อเรา -->
+            <div class="col-md-4">
+                <h5>ติดต่อเรา</h5>
+                <p>Tel: 081-259-3340</p>
+                <p>Email: <a href="mailto:info@website.com">info@website.com</a></p>
+                <p>Facebook: <a href="#">Our Facebook Page</a></p>
+            </div>
+        </div>
+
+        <!-- 🔹 Copyright -->
+        <div class="footer-bottom">
+            <p>© 2025 Website Name. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+<!-- Floating Button to Toggle Social Buttons -->
+<button class="toggle-social" onclick="toggleSocialButtons()">💼</button>
+
+<!-- Floating Social Media Buttons (Initially Hidden) -->
+<div class="floating-social" id="socialButtons">
+    <a href="https://m.me/YOUR_PAGE" target="_blank" class="social-btn messenger"><i class="bi bi-messenger"></i></a>
+    <a href="https://www.facebook.com/YOUR_PAGE" target="_blank" class="social-btn facebook"><i class="bi bi-facebook"></i></a>
+    <a href="https://line.me/R/YOUR_LINE_ID" target="_blank" class="social-btn line"><i class="bi bi-line"></i></a>
+    <a href="tel:0812345678" class="social-btn call"><i class="bi bi-telephone"></i></a>
+    <a href="contact.html" class="social-btn profile"><i class="bi bi-person-circle"></i></a>
+    <a href="#" class="social-btn close-btn" onclick="toggleSocialButtons()"><i class="bi bi-x-circle"></i></a>
+</div>
+    <!-- กล่องแชทบอท ปุ่มเปิดแชท -->
+    <button class="chat-toggle" id="chatToggle">💬</button>
+
+    <!-- กล่องแชท -->
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <h3>🤖 Healthy Bot</h3>
+            <button class="close-chat" id="closeChat">✖</button>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="bot-message">สวัสดี! ฉันสามารถช่วยคุณเกี่ยวกับสุขภาพได้ 😊</div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chatInput" placeholder="พิมพ์ข้อความ...">
+            <button id="sendMessage">▶</button>
+        </div>
+    </div>
+
+
+
+    <!-- 🔹 ปุ่มกลับไปด้านบน -->
+    <button onclick="scrollToTop()" id="backToTopBtn" class="btn btn-primary"><i class="bi bi-arrow-up"></i></button>
+
+    <!-- 🔹 รวม JavaScript -->
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const cards = document.querySelectorAll(".card"); // เลือกทุกการ์ด
+    
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show"); // เพิ่ม class เมื่อการ์ดเข้ามาในหน้าจอ
+                }
+            });
+        }, { threshold: 0.3 }); // 20% ของการ์ดต้องปรากฏก่อนจะแสดงเอฟเฟกต์
+    
+        cards.forEach(card => {
+            observer.observe(card); // ตรวจจับทุกการ์ด
+        });
+    });
+    // 🔹 ฟังก์ชันซ่อน-แสดง Floating Social Buttons
+    function toggleSocialButtons() {
+    let socialButtons = document.querySelector('.floating-social');
+    socialButtons.style.display = (socialButtons.style.display === 'none') ? 'flex' : 'none';
+}
+    </Script>
+</body>
+</html>
