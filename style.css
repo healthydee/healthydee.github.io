@@ -244,10 +244,6 @@ html, body {
     background-color: #666;
 }
 #darkModeToggle {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    z-index: 1000;
     background: #f4a261;
     color: white;
     border: none;
