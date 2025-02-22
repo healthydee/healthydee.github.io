@@ -22,7 +22,9 @@
         }
 
         .container {
-            max-width: 90%;
+	    text-align: center;
+            margin: 0 auto; /* จัดให้อยู่กึ่งกลาง */
+            max-width: 80%;
             margin-left: 0;
             background: rgba(255, 255, 255, 1.0);
             padding: 30px;
@@ -322,6 +324,102 @@
             <i class="bi bi-arrow-left"></i> กลับหน้าหลัก
         </a>
     </div>
+	
+<!-- 🔹 Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <!-- 🔹 คอลัมน์ที่ 1: เกี่ยวกับเรา -->
+            <div class="col-md-4">
+                <h5>งานกลุ่มเขียนเว็ป</h5>
+                <p>Rajamangala University of Technology Thanyaburi </p>
+				<p>ที่อยู่ : 39 หมู่ที่ 1 ตำบลคลองหก อำเภอคลองหลวง จังหวัดปทุมธานี 12120</p>
+            </div>
+
+            <!-- 🔹 คอลัมน์ที่ 2: ลิงก์ที่เกี่ยวข้อง -->
+            <div class="col-md-4">
+                <h5>เมนู</h5>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div>
+
+            <!-- 🔹 คอลัมน์ที่ 3: ติดต่อเรา -->
+            <div class="col-md-4">
+                <h5>ติดต่อเรา</h5>
+                <p>Tel: 081-259-3340</p>
+                <p>Email: <a href="mailto:info@website.com">info@website.com</a></p>
+                <p>Facebook: <a href="#">Our Facebook Page</a></p>
+            </div>
+        </div>
+
+        <!-- 🔹 Copyright -->
+        <div class="footer-bottom">
+            <p>© 2025 Website Name. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+<!-- Floating Button to Toggle Social Buttons -->
+<button class="toggle-social" onclick="toggleSocialButtons()">📱</button>
+
+<!-- Floating Social Media Buttons (Initially Hidden) -->
+<div class="floating-social" id="socialButtons">
+    <a href="https://m.me/YOUR_PAGE" target="_blank" class="social-btn messenger"><i class="bi bi-messenger"></i></a>
+    <a href="https://www.facebook.com/YOUR_PAGE" target="_blank" class="social-btn facebook"><i class="bi bi-facebook"></i></a>
+    <a href="https://line.me/R/YOUR_LINE_ID" target="_blank" class="social-btn line"><i class="bi bi-line"></i></a>
+    <a href="tel:0812345678" class="social-btn call"><i class="bi bi-telephone"></i></a>
+    <a href="contact.html" class="social-btn profile"><i class="bi bi-person-circle"></i></a>
+    <a href="#" class="social-btn close-btn" onclick="toggleSocialButtons()"><i class="bi bi-x-circle"></i></a>
+</div>
+    <!-- กล่องแชทบอท ปุ่มเปิดแชท -->
+    <button class="chat-toggle" id="chatToggle">💬</button>
+
+    <!-- กล่องแชท -->
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <h3>🤖 Healthy Bot</h3>
+            <button class="close-chat" id="closeChat">✖</button>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="bot-message">สวัสดี! ฉันสามารถช่วยคุณเกี่ยวกับสุขภาพได้ 😊</div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chatInput" placeholder="พิมพ์ข้อความ...">
+            <button id="sendMessage">▶</button>
+        </div>
+    </div>
+
+
+
+    <!-- 🔹 ปุ่มกลับไปด้านบน -->
+    <button onclick="scrollToTop()" id="backToTopBtn" class="btn btn-primary"><i class="bi bi-arrow-up"></i></button>
+
+    <!-- 🔹 รวม JavaScript -->
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const cards = document.querySelectorAll(".card"); // เลือกทุกการ์ด
     
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show"); // เพิ่ม class เมื่อการ์ดเข้ามาในหน้าจอ
+                }
+            });
+        }, { threshold: 0.3 }); // 20% ของการ์ดต้องปรากฏก่อนจะแสดงเอฟเฟกต์
+    
+        cards.forEach(card => {
+            observer.observe(card); // ตรวจจับทุกการ์ด
+        });
+    });
+    // 🔹 ฟังก์ชันซ่อน-แสดง Floating Social Buttons
+    function toggleSocialButtons() {
+    let socialButtons = document.querySelector('.floating-social');
+    socialButtons.style.display = (socialButtons.style.display === 'none') ? 'flex' : 'none';
+}
+    </Script>    
 </body>
 </html>
