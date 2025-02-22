@@ -755,3 +755,20 @@ h3, h4 {
 p , h1 , h2 ,h3 ,h4 ,h5 {
     text-wrap: balance;
 }
+
+/* 🌟 ใช้ฟอนต์ Mae Hong Son */
+@font-face {
+    font-family: 'Maehongson';
+    src: url('fonts/Maehongson.otf') format('opentype'),
+         url('fonts/Maehongson.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 🎨 เปลี่ยนฟอนต์ทุกหน้าเว็บ */
+body, h1, h2, h3, h4, h5, h6, p, a, button, input, label {
+    font-family: 'Maehongson', sans-serif !important;
+}
+
+
+
