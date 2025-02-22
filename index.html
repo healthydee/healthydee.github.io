@@ -149,9 +149,11 @@ h4 {
             </div>
 
             <!-- ปุ่ม Sign In / Sign Out -->
-            <div class="d-flex">
-                <button id="signInBtn" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
-                <button id="signOutBtn" style="display: none;">Logout</button>
+            <div class="d-flex align-items-center">
+			<!-- ปุ่ม Dark Mode -->
+		<button id="darkModeToggle" class="btn btn-darkmode">🌙</button>
+                <button id="signInBtn" class="btn btn-login mx-2" data-bs-toggle="modal" data-bs-target="#loginModal">เข้าสู่ระบบ</button>				
+                <button id="signOutBtn" class="btn btn-login mx-2" style="display: none;">ออกจากระบบ</button>
             </div>
         </div>
     </nav>
