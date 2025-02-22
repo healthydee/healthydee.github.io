@@ -120,6 +120,76 @@
     </style>
 </head>
 <body>
+        <header>
+        <img src="bannerr.jpg" alt="Healthy Diary Banner" class="banner">
+    </header>
+    <!-- 🔹 Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top bg-light">
+        <div class="container-fluid">
+            <!--<a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="Foodie Delight Logo">
+            </a>-->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html">หน้าแรก</a></li>                   
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">หมวดหมู่การบริโภค</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="food-blood.html">อาหารตามกรุ๊ปเลือด</a></li>
+                            <li><a class="dropdown-item" href="#">อาหารแต่ละช่วงวัย</a></li>
+                            <li><a class="dropdown-item" href="#">สำหรับผู้แพ้อาหาร</a></li>
+                        </ul>
+                    </li>
+			<li class="nav-item"><a class="nav-link" href="aboutwe.html">เกี่ยวกับเรา</a></li> 
+			<li class="nav-item"><a class="nav-link" href="contact.html">ติดต่อเรา</a></li>
+                    <!-- เมนูคำนวณ BMI (แสดงเมื่อผู้ใช้ล็อกอิน) -->
+                    <li class="nav-item" id="bmiMenu" style="display: none;">
+                        <a class="nav-link" href="bmi-cal.html">คำนวณ BMI</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- ปุ่ม Sign In / Sign Out -->
+            <div class="d-flex align-items-center">
+			<!-- ปุ่ม Dark Mode -->
+		<button id="darkModeToggle" class="btn btn-darkmode">🌙</button>
+                <button id="signInBtn" class="btn btn-login mx-2" data-bs-toggle="modal" data-bs-target="#loginModal">เข้าสู่ระบบ</button>				
+                <button id="signOutBtn" class="btn btn-login mx-2" style="display: none;">ออกจากระบบ</button>
+            </div>
+        </div>
+    </nav>
+
+<!-- Modal สำหรับล็อกอิน -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Header ของ Modal -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">เข้าสู่ระบบ</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- Body ของ Modal -->
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" placeholder="กรอกชื่อผู้ใช้" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="กรอกรหัสผ่าน" required>
+                    </div>
+                    <button type="submit" class="btn btn-login w-100">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    
     <div class="container">
         <h1 class="text-center mb-4">🍽 เมนูอาหารตามกรุ๊ปเลือด</h1>
         <p class="text-center text-muted">แนะนำเมนูอาหารที่เหมาะสมกับแต่ละกรุ๊ปเลือด เพื่อสุขภาพที่ดีขึ้น 🩸</p>
