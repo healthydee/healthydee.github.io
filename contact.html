@@ -153,7 +153,7 @@ h4 {
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">หมวดหมู่การบริโภค</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">อาหารตามกรุ๊ปเลือด</a></li>
+                            <li><a class="dropdown-item" href="food-blood.html">อาหารตามกรุ๊ปเลือด</a></li>
                             <li><a class="dropdown-item" href="#">อาหารแต่ละช่วงวัย</a></li>
                             <li><a class="dropdown-item" href="#">สำหรับผู้แพ้อาหาร</a></li>
                         </ul>
@@ -167,9 +167,11 @@ h4 {
             </div>
 
             <!-- ปุ่ม Sign In / Sign Out -->
-            <div class="d-flex">
-                <button id="signInBtn" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
-                <button id="signOutBtn" style="display: none;">Logout</button>
+            <div class="d-flex align-items-center">
+			<!-- ปุ่ม Dark Mode -->
+		<button id="darkModeToggle" class="btn btn-darkmode">🌙</button>
+                <button id="signInBtn" class="btn btn-login mx-2" data-bs-toggle="modal" data-bs-target="#loginModal">เข้าสู่ระบบ</button>				
+                <button id="signOutBtn" class="btn btn-login mx-2" style="display: none;">ออกจากระบบ</button>
             </div>
         </div>
     </nav>
