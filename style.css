@@ -759,8 +759,8 @@ p , h1 , h2 ,h3 ,h4 ,h5 {
 /* 🌟 ใช้ฟอนต์ Mae Hong Son */
 @font-face {
     font-family: 'Maehongson';
-    src: url('fonts/Maehongson.otf') format('opentype'),
-         url('fonts/Maehongson.ttf') format('truetype');
+    src: url('Maehongson.otf') format('opentype'),
+         url('Maehongson.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
