@@ -162,7 +162,7 @@ html, body {
 
 /* 🔹 Navbar รองรับ Dark Mode */
 .dark-mode .navbar {
-    background-color: #DCDCDC !important;
+    background-color: #4f4e4c !important;
 }
 
 .dark-mode .dropdown-menu {
