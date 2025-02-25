@@ -822,7 +822,7 @@ h3, h4 {
     to { opacity: 1; transform: translateY(0); }
 }
 
-p , h1 , h2 ,h3 ,h4 ,h5 {
+h1 , h2 ,h3 ,h4 ,h5 { /*ลบ p*/
     text-wrap: balance;
 }
 
@@ -838,6 +838,13 @@ p , h1 , h2 ,h3 ,h4 ,h5 {
 /* 🎨 เปลี่ยนฟอนต์ทุกหน้าเว็บ */
 body, h1, h2, h3, h4, h5, h6, p, a, button, input, label {
     font-family: 'Maehongson', sans-serif !important;
+}
+
+.text-justify-custom {
+    text-align: justify !important;
+    text-wrap: unset !important;  /* 🔥 ปิดการใช้งาน text-wrap ที่บังคับอยู่ */
+    line-height: 1.8;
+    word-spacing: 1px;
 }
 
 
