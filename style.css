@@ -400,7 +400,7 @@ h3, h4 {
 /* 🔹 Footer (สีส้ม) */
 /* =========================== */
 .footer {
-    background-color: #4CAF50; /* สีส้ม */
+    background-color: #20B2AA; /* สีส้ม */
     color: white;
     padding: 3px 0; /* ปรับ padding ด้านล่างให้ไม่มีช่องว่าง */
     margin: 0; /* กำจัด margin ที่อาจเกิดขึ้น */
@@ -408,12 +408,12 @@ h3, h4 {
 }
 
 .footer h5 {
-    font-size: 20px;
+    font-size: 17px;
     font-weight: bold;
 }
 
 .footer p {
-    font-size: 18px;
+    font-size: 15px;
     margin: 5px 0;
 }
 
