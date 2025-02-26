@@ -631,14 +631,16 @@ h3, h4 {
 }
 
 /* 🔹 Remember Me */
-.d-flex.align-items-center {
-    display: flex;
-    align-items: center;
+.d-flex.align-items-center input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
 }
 
-/* 🔹 ปรับระยะห่างระหว่าง Checkbox และ Label */
-#rememberMe {
-    margin-right: 5px;
+.d-flex.align-items-center label {
+    font-size: 14px; /* ปรับขนาดตัวหนังสือ */
+    cursor: pointer;
+    white-space: nowrap; /* ป้องกันข้อความขึ้นบรรทัดใหม่ */
 }
 
 /*************************************************** ปุ่มโซเชียลมีเดีย **********************************************************/
