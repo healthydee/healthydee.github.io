@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthy Diary</title>
+    
+    <!-- CSS Frameworks -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="style.css"> <!-- ไฟล์ CSS หลักของเรา -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Athiti:wght@200;300;400;500;600;700&family=Itim&family=Mitr:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+/* 🌍 Floating Social Buttons */
+.floating-social {
+    position: fixed;
+    right: 20px;
+    bottom: 150px; /* ✅ เพิ่มระยะห่างจากปุ่ม Back to Top */
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 999;
+}
+
+/* 🎨 ปรับแต่งปุ่ม */
+.social-btn {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    color: white;
+    font-size: 22px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 🎭 สีของแต่ละปุ่ม */
+.messenger { background-color: #0084FF; }
+.facebook { background-color: #1877F2; }
+.line { background-color: #06C755; }
+.call { background-color: #6C63FF; }
+.profile { background-color: #FFD43B; }
+.close-btn { background-color: #FF3B3B; }
+
+/* 🔥 Hover Effect */
+.social-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* 🎛 ปุ่ม Toggle Social */
+.toggle-social {
+    position: fixed;
+    bottom: 75px;
+    right: 20px;
+    width: 50px; /* ✅ ปรับขนาด */
+    height: 50px;
+    border-radius: 50%; /* ✅ ทำให้เป็นวงกลม */
+    display: flex;
+    align-items: center;  /* ✅ จัดให้อีโมจิอยู่ตรงกลางแนวตั้ง */
+    justify-content: center; /* ✅ จัดให้อีโมจิอยู่ตรงกลางแนวนอน */
+    font-size: 24px; /* ✅ ปรับขนาดอีโมจิ */
+    cursor: pointer;
+    border: none;
+    background-color: #f4a261; /* ✅ สีปุ่ม */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* ✅ ใส่เงาให้ดูมีมิติ */
+    transition: transform 0.2s, background 0.3s;
+}
+
+/* เอฟเฟกต์ Hover ให้ปุ่ม Toggle */
+.toggle-social:hover {
+    background: #E67E22;
+    transform: scale(1.1);
+}
+
+.containerx {
+            text-align: left;
+            max-width: 80%;
+            margin: 0 auto; /* จัดให้อยู่กึ่งกลาง */
+            /*background: rgba(255, 255, 255, 1.0);*/
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+    </style>
+</head>
+<body>
+
+
+    <header>
+        <img src="bannerr.jpg" alt="Healthy Diary Banner" class="banner">
+    </header>
+    <!-- 🔹 Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top bg-light">
+        <div class="container-fluid">
+            <!--<a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="Foodie Delight Logo">
+            </a>-->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html">หน้าแรก</a></li>                   
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">หมวดหมู่การบริโภค</a>
+                        <ul class="dropdown-menu">
+			    <li><a class="dropdown-item" href="food-age.html">ช่วงวัย</a></li>
+                            <li><a class="dropdown-item" href="food-blood.html">กรุ๊ปเลือด</a></li>
+                            <li><a class="dropdown-item" href="food-allergy.html">ผู้แพ้อาหาร</a></li>
+                        </ul>
+                    </li>
+			<li class="nav-item"><a class="nav-link" href="contact.html">ติดต่อเรา</a></li>
+                    <!-- เมนูคำนวณ BMI (แสดงเมื่อผู้ใช้ล็อกอิน) -->
+                    <li class="nav-item" id="bmiMenu" style="display: none;">
+                        <a class="nav-link" href="bmi-cal.html">คำนวณ BMI</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- ปุ่ม Sign In / Sign Out -->
+            <div class="d-flex align-items-center">
+			<!-- ปุ่ม Dark Mode -->
+		<button id="darkModeToggle" class="btn btn-darkmode">🌙</button>
+                <button id="signInBtn" class="btn btn-login mx-2" data-bs-toggle="modal" data-bs-target="#loginModal">เข้าสู่ระบบ</button>				
+                <button id="signOutBtn" class="btn btn-login mx-2" style="display: none;">ออกจากระบบ</button>
+            </div>
+        </div>
+    </nav>
+
+<!-- 🔹 Modal สำหรับล็อกอิน -->
+<div class="modal fade login-modal" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <!-- Header ของ Modal -->
+        <div class="modal-header d-flex justify-content-center w-100">
+            <h5 class="modal-title">เข้าสู่ระบบ</h5>
+            <button type="button" class="btn-close position-absolute" style="right: 15px;" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+            <!-- Body ของ Modal -->
+            <div class="modal-body">
+                <img src="logo.png" alt="User Icon" class="login-icon">
+                
+                <form id="loginForm">
+                    <!-- 🔹 ช่อง Username -->
+                    <div class="mb-3 position-relative">
+                        <i class="fa fa-user"></i>
+                        <input type="text" id="username" class="form-control" placeholder="ชื่อผู้ใช้งาน" required>
+                    </div>
+
+                    <!-- 🔹 ช่อง Password -->
+                    <div class="mb-3 position-relative">
+                        <i class="fa fa-lock"></i>
+                        <input type="password" id="password" class="form-control" placeholder="รหัสผ่าน" required>
+                        <i class="fas fa-eye toggle-password" id="togglePassword"></i>
+                    </div>
+
+                    <!-- 🔹 Remember Me & Forgot Password -->
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <input type="checkbox" id="rememberMe">
+                            <label for="rememberMe">จดจำ</label>
+                        </div>
+                        <a href="#" class="forgot-password">ลืมรหัสผ่าน?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-login">เข้าสู่ระบบ</button>
+                    <!-- 🔹 สมัครสมาชิก -->
+                    <div style="margin-top: 20px;">
+                        <p class="register-link">ยังไม่มีบัญชี? <a href="register.html">สมัครสมาชิก</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <div class="containerx">
+        <h4 style="text-align: center;">5 อาหารลดเสี่ยง “เส้นเลือดในสมองตีบ-แตก” ก่อนวัยอันควร</h4>
+		 <h1 style="text-align: center;"><img src="newf2.jpg" alt="newh" style="display: block; margin: 0 auto;"></h1>
+		<p style="text-align: center;">iStock</p>
+        <p><strong>ทราบหรือไม่ว่าโรคหลอดเลือดสมอง ไม่ต้องรอแก่เราก็อาจเสี่ยงได้ แต่อาหารเหล่านี้ช่วยลดความเสี่ยงได้จริง</strong></p>
+        <p>โรคหลอดเลือดสมอง (stroke) คือ ภาวะที่เนื้อเยื่อและเซลล์สมองถูกทำลายอันเนื่องมาจากหลอดเลือด<br>สมองตีบ อุดตันหรือแตก ส่งผลให้เกิดอาการอัมพฤกษ์ อัมพาต หรือรุนแรงจนกระทั่งเสียชีวิตได้ โดยมีสาเหตุ<br>ทั้งที่มาจากพันธุกรรม อายุที่มากขึ้น และพฤติกรรมในการใช้ชีวิต รวมถึงอาหารการกิน </p>
+		<h4>อาหารลดเสี่ยง  เส้นเลือดในสมองตีบ – แตก  ก่อนวัยอันควร</h4>
+		<p>1.ปลา</p>
+		<p>ปลา เป็นโปรตีนที่ดีต่อสุขภาพ เพราะปริมาณไขมันที่ไม่ดีต่อร่างกายน้อยกว่าในเนื้อสัตว์ประเภทอื่นๆ ปลาที่<br>แนะนำคือปลาที่มีโอเมก้า 3 สูง ได้แก่ ปลาแมคเคอเรล ปลาทูน่า ปลาซาร์ดีน หรือปลาที่หารับประทานได้ง่ายใน<br>ประเทศไทย เช่น ปลาจะละเม็ดขาว ปลากะพงขาว ปลาดุก ปลาสวาย ปลาทู ปลาสลิด ปลาตะเพียน เป็นต้น</p>
+		<p>2.โปรตีนจากพืช</p>
+		<p>นอกจากเนื้อปลาแล้ว โปรตีนที่ดีต่อสุขภาพอีกชนิดหนึ่ง หรือโปรตีนที่มาจากพืช เช่น เต้าหู้ นมพร่องมันเนย<br>หรือขาดมันเนย เป็นต้น</p>
+		<p>3.คาร์โบไฮเดรตเชิงซ้อน </p>
+		<p>แทนที่จะกินคาร์โบไฮเดรตเชิงเดี่ยว ได้แก่ ข้าวขาว ขนมปังขาว หันมาเลือกกินคาร์โบไฮเดรตเชิงซ้อนที่มีกากใย<br>อาหารและคุณค่าทางสารอาหารมากกว่า ได้แก่ ข้าวกล้อง ธัญพืช ถั่วเมล็ดแห้ง ผักหลากหลายสี และผลไม้ไม่<br>หวานจัด หลีกเลี่ยงหรือบริโภคเพียงเล็กน้อยในกลุ่มคาร์โบไฮเดรตขัดขาว อาหารที่มี<br>น้ำตาลสูง เครื่องดื่มที่มีน้ำตาลสูง รวมถึงน้ำผลไม้ เพราะน้ำผลไม้เต็มไปด้วยน้ำตาลล้วนๆ ไม่มีกากใยอาหาร</p>
+		
+        <p>4.ไขมันดี</p>
+		<p>เลือกกินอาหารที่มีไขมันที่ดี เช่น ถั่วเปลือกแข็ง เมล็ดพืชต่างๆ อะโวคาโด น้ำมันมะกอก น้ำมันรำข้าว น้ำมันคา<br>โนล่า น้ำมันเมล็ดชา หลีกเลี่ยงการกินอาหารที่มีไขมันอิ่มตัว ทั้งไขมันจากสัตว์และไขมันจากพืช เช่น น้ำมัน<br>ปาล์ม น้ำมันมะพร้าว กะทิ เป็นต้น</p>
+		<p>5.อาหารจากธรรมชาติ</p>
+		<p>ควรเลือกบริโภคอาหารที่มาจากธรรมชาติมากกว่าอาหารที่ผ่านกระบวนการปรุงแต่งหลายขั้นตอน เช่น เลือก<br>เนื้อสัตว์สดๆ มาปรุงอาหารมากกว่ารับประทานไส้กรอก แฮม นอกจากจะได้สารอาหารที่มีคุณค่าต่อร่างกาย<br>มากกว่าแล้ว ในอาหารแปรรูปยังมีปริมาณโซเดียมมาก เพิ่มความเสี่ยงในการเป็นโรคหลอดเลือด โรคไต และ<br>ความดันโลหิตสูงได้</p>
+        <p>นอกจากจะเลือกกินอาหารตามที่แนะนำไปข้างต้นให้มากขึ้นแล้ว ยังควรออกกำลังกายอย่างสม่ำเสมอ อย่างน้อย<br>สัปดาห์ละ 3-5 วัน ครั้งละ 30 นาที - 1 ชั่วโมง และนอนหลับพักผ่อนให้เพียงพอด้วย จึงจะได้มาซึ่งสุขภาพดีไร้<br>โรค และลดความเสี่ยงของโรคหลอดเลือดสมองได้จริง</p>
+		<p>อ้างอิง</p>
+		<p>โรงพยาบาลราชวิถี 5 อาหารลดเสี่ยง “เส้นเลือดในสมองตีบ-แตก” ก่อนวัยอันควร เผยแพ่เมื่อ 17 ธ.ค. 67</p>
+		<p>สืบค้นเมื่อ 27 ก.พ. 68</p>
+		<p>www.sanook.com</p>
+    </div>
+
+
+<!-- Floating Button to Toggle Social Buttons -->
+<button class="toggle-social" onclick="toggleSocialButtons()">📱</button>
+
+<!-- Floating Social Media Buttons (Initially Hidden) -->
+<div class="floating-social" id="socialButtons">
+    <a href="https://m.me/YOUR_PAGE" target="_blank" class="social-btn messenger"><i class="bi bi-messenger"></i></a>
+    <a href="https://www.facebook.com/YOUR_PAGE" target="_blank" class="social-btn facebook"><i class="bi bi-facebook"></i></a>
+    <a href="https://line.me/R/YOUR_LINE_ID" target="_blank" class="social-btn line"><i class="bi bi-line"></i></a>
+    <a href="tel:0812345678" class="social-btn call"><i class="bi bi-telephone"></i></a>
+    <a href="contact.html" class="social-btn profile"><i class="bi bi-person-circle"></i></a>
+    <a href="#" class="social-btn close-btn" onclick="toggleSocialButtons()"><i class="bi bi-x-circle"></i></a>
+</div>
+    <!-- กล่องแชทบอท ปุ่มเปิดแชท -->
+    <button class="chat-toggle" id="chatToggle">💬</button>
+
+    <!-- กล่องแชท -->
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <h3>🤖 Healthy Bot</h3>
+            <button class="close-chat" id="closeChat">✖</button>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="bot-message">สวัสดี! ฉันสามารถช่วยคุณเกี่ยวกับสุขภาพได้ 😊</div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chatInput" placeholder="พิมพ์ข้อความ...">
+            <button id="sendMessage">▶</button>
+        </div>
+    </div>
+
+
+    <!-- 🔹 ปุ่มกลับไปด้านบน -->
+    <button onclick="scrollToTop()" id="backToTopBtn" class="btn btn-primary"><i class="bi bi-arrow-up"></i></button>
+<!-- 🔹 Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <!-- 🔹 คอลัมน์ที่ 1: เกี่ยวกับเรา -->
+            <div class="col-md-4">
+                <h5>เกี่ยวกับเรา</h5>
+                <p>
+				Healthy Diary เชื่อว่าสุขภาพดีไม่ได้มาจากโชค แต่จากการดูแลตัวเอง เราเลยอยากแชร์ข้อมูลสุขภาพที่เข้าใจง่าย ใช้ได้จริง
+				และสนุกไปด้วยกัน ไม่ว่าคุณจะอยากลดน้ำหนัก ฟิตหุ่น หรือแค่ดูแลตัวเอง เราพร้อมเป็นเพื่อนร่วมทาง! 💚
+                </p>
+            </div>
+
+            <!-- 🔹 คอลัมน์ที่ 2: ติดต่อเรา -->
+            <div class="col-md-4">
+                <p><strong>📍 ที่อยู่:</strong> 39 หมู่ที่ 1 ถนนรังสิต - นครนายก ตำบล คลองหก อำเภอคลองหลวง ปทุมธานี 12110</p>
+                <p><strong>📧 อีเมล:</strong> <a href="mailto:contact@healthy.com">contact@healthy.com</a></p>
+                <p><strong>☎️ โทรศัพท์:</strong> 02-8888-8888</p>
+                <p><strong>🕒 เวลาทำการ:</strong> จันทร์ - ศุกร์ | 08:00 - 18:00 น.</p>
+            </div>
+
+            <!-- 🔹 คอลัมน์ที่ 3: เมนู -->
+            <div class="col-md-4">
+                <h5>เมนู</h5>
+                <ul class="footer-links">
+                    <li><a href="index.html">หน้าแรก</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 🔹 Copyright -->
+        <div class="footer-bottom">
+            <p>© 2025 Healthy Diary. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+    <!-- 🔹 รวม JavaScript -->
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
