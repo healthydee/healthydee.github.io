@@ -262,6 +262,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 reply = "สวัสดีค่ะ! ต้องการให้ช่วยอะไร?";
             } else if (message.includes("สุขภาพ")) {
                 reply = "คุณต้องการคำแนะนำด้านสุขภาพอะไร?";
+            } else if (message.includes("ควรเริ่มจากอะไรดี")) {
+                reply = "เริ่มจากการล็อกอินเพื่อใช้งานฟังก์ชันคำนวนบีเอ็มไอก่อนอันดับแรกเลย";
             } else {
                 reply = "ขอโทษค่ะ ฉันไม่เข้าใจ ลองพิมพ์คำถามอื่นได้นะ!";
             }
