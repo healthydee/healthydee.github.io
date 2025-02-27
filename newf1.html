@@ -1,0 +1,289 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthy Diary</title>
+    
+    <!-- CSS Frameworks -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="style.css"> <!-- ไฟล์ CSS หลักของเรา -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Athiti:wght@200;300;400;500;600;700&family=Itim&family=Mitr:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+/* 🌍 Floating Social Buttons */
+.floating-social {
+    position: fixed;
+    right: 20px;
+    bottom: 150px; /* ✅ เพิ่มระยะห่างจากปุ่ม Back to Top */
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 999;
+}
+
+/* 🎨 ปรับแต่งปุ่ม */
+.social-btn {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    color: white;
+    font-size: 22px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 🎭 สีของแต่ละปุ่ม */
+.messenger { background-color: #0084FF; }
+.facebook { background-color: #1877F2; }
+.line { background-color: #06C755; }
+.call { background-color: #6C63FF; }
+.profile { background-color: #FFD43B; }
+.close-btn { background-color: #FF3B3B; }
+
+/* 🔥 Hover Effect */
+.social-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* 🎛 ปุ่ม Toggle Social */
+.toggle-social {
+    position: fixed;
+    bottom: 75px;
+    right: 20px;
+    width: 50px; /* ✅ ปรับขนาด */
+    height: 50px;
+    border-radius: 50%; /* ✅ ทำให้เป็นวงกลม */
+    display: flex;
+    align-items: center;  /* ✅ จัดให้อีโมจิอยู่ตรงกลางแนวตั้ง */
+    justify-content: center; /* ✅ จัดให้อีโมจิอยู่ตรงกลางแนวนอน */
+    font-size: 24px; /* ✅ ปรับขนาดอีโมจิ */
+    cursor: pointer;
+    border: none;
+    background-color: #f4a261; /* ✅ สีปุ่ม */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* ✅ ใส่เงาให้ดูมีมิติ */
+    transition: transform 0.2s, background 0.3s;
+}
+
+/* เอฟเฟกต์ Hover ให้ปุ่ม Toggle */
+.toggle-social:hover {
+    background: #E67E22;
+    transform: scale(1.1);
+}
+
+.containerx {
+            text-align: left;
+            max-width: 80%;
+            margin: 0 auto; /* จัดให้อยู่กึ่งกลาง */
+            /*background: rgba(255, 255, 255, 1.0);*/
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+    </style>
+</head>
+<body>
+
+
+    <header>
+        <img src="bannerr.jpg" alt="Healthy Diary Banner" class="banner">
+    </header>
+    <!-- 🔹 Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top bg-light">
+        <div class="container-fluid">
+            <!--<a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="Foodie Delight Logo">
+            </a>-->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html">หน้าแรก</a></li>                   
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">หมวดหมู่การบริโภค</a>
+                        <ul class="dropdown-menu">
+			    <li><a class="dropdown-item" href="food-age.html">ช่วงวัย</a></li>
+                            <li><a class="dropdown-item" href="food-blood.html">กรุ๊ปเลือด</a></li>
+                            <li><a class="dropdown-item" href="food-allergy.html">ผู้แพ้อาหาร</a></li>
+                        </ul>
+                    </li>
+			<li class="nav-item"><a class="nav-link" href="contact.html">ติดต่อเรา</a></li>
+                    <!-- เมนูคำนวณ BMI (แสดงเมื่อผู้ใช้ล็อกอิน) -->
+                    <li class="nav-item" id="bmiMenu" style="display: none;">
+                        <a class="nav-link" href="bmi-cal.html">คำนวณ BMI</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- ปุ่ม Sign In / Sign Out -->
+            <div class="d-flex align-items-center">
+			<!-- ปุ่ม Dark Mode -->
+		<button id="darkModeToggle" class="btn btn-darkmode">🌙</button>
+                <button id="signInBtn" class="btn btn-login mx-2" data-bs-toggle="modal" data-bs-target="#loginModal">เข้าสู่ระบบ</button>				
+                <button id="signOutBtn" class="btn btn-login mx-2" style="display: none;">ออกจากระบบ</button>
+            </div>
+        </div>
+    </nav>
+
+<!-- 🔹 Modal สำหรับล็อกอิน -->
+<div class="modal fade login-modal" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <!-- Header ของ Modal -->
+        <div class="modal-header d-flex justify-content-center w-100">
+            <h5 class="modal-title">เข้าสู่ระบบ</h5>
+            <button type="button" class="btn-close position-absolute" style="right: 15px;" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+            <!-- Body ของ Modal -->
+            <div class="modal-body">
+                <img src="logo.png" alt="User Icon" class="login-icon">
+                
+                <form id="loginForm">
+                    <!-- 🔹 ช่อง Username -->
+                    <div class="mb-3 position-relative">
+                        <i class="fa fa-user"></i>
+                        <input type="text" id="username" class="form-control" placeholder="ชื่อผู้ใช้งาน" required>
+                    </div>
+
+                    <!-- 🔹 ช่อง Password -->
+                    <div class="mb-3 position-relative">
+                        <i class="fa fa-lock"></i>
+                        <input type="password" id="password" class="form-control" placeholder="รหัสผ่าน" required>
+                        <i class="fas fa-eye toggle-password" id="togglePassword"></i>
+                    </div>
+
+                    <!-- 🔹 Remember Me & Forgot Password -->
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <input type="checkbox" id="rememberMe">
+                            <label for="rememberMe">จดจำ</label>
+                        </div>
+                        <a href="#" class="forgot-password">ลืมรหัสผ่าน?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-login">เข้าสู่ระบบ</button>
+                    <!-- 🔹 สมัครสมาชิก -->
+                    <div style="margin-top: 20px;">
+                        <p class="register-link">ยังไม่มีบัญชี? <a href="register.html">สมัครสมาชิก</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <div class="containerx">
+        <h4 style="text-align: center;">“ไข่ผำ” ซุปเปอร์ฟู้ดขนาดจิ๋ว คุณค่าโภชนาการสูง อาหารแห่งอนาคต</h4>
+        <p><strong>“ไข่ผำ” พืชน้ำที่หลายคนให้ความสนใจ ประกอบอาหารได้หลากหลายและเป็นหนึ่งในวัตถุดิบของ<br>ไทยมาตั้งแต่สมัยโบราณ หนึ่งในอาหารซุปเปอร์ฟู้ดประโยชน์สูง!</strong></p>
+        
+        <p><strong>“ไข่ผำ” หรือ “ไข่น้ำ” พืชน้ำขนาดเล็ก </strong>มีลักษณะ เป็นพืชน้ำขนาดเล็กเม็ดกลมคล้าย ๆ ไข่ปลา <br>กระจายคลุมเหนือผิวน้ำเป็นแพ มักจะขึ้นอยู่ตามแหล่งน้ำสะอาดที่เป็นน้ำนิ่ง จัดเป็นพืชดอกไม่มีราก<br>และใบ ชาวบ้านนิยมนำไปประกอบอาหารกันตั้งแต่สมัยโบราณ เช่น แกง ผัด หรือใส่เป็นส่วนประกอบ<br>ของอาหาร เพื่อเพิ่มรสชาติให้มีความหอม มัน อร่อย มากยิ่งขึ้น</p>
+        <h1 style="text-align: center;"><img src="newf1.jpg" alt="newh" style="display: block; margin: 0 auto;"></h1>
+        <h4>ประโยชน์ของไข่ผำ</h4>
+        <p>1. แหล่งของโปรตีนที่สูงมากถึง 40 เปอร์เซ็นต์ ของน้ำหนักตอนแห้ง </p>
+		<p>2. มีกรดอะมิโนจำเป็นครบถ้วนและยังอุดมไปด้วยสารอาหารที่จำเป็นมากมายเช่น เหล็ก แคลเซียม <br>สังกะสี  </p>
+		<p>3. ช่วยเสริมกระดูก การไหลเวียนโลหิต และเพิ่มภูมิคุ้มกัน  </p>
+		<p>4. มีวิตามินบี 12 ช่วยในการทำงานของระบบประสาท ซึ่งไม่พบในผลิตภัณฑ์จากพืชตามธรรมชาติชนิด<br>อื่น  </p>
+		<p>5. มีวิตามินเอ ลูทีน ซีแซนทิน ช่วยบำรุงสายตา  </p>
+		<p>6. มีวิตามินซี วิตามินอี วิตามินเค และสารต้านอนุมูลอิสระอื่น ๆ ในระดับสูง </p>
+		<p>7. ย่อยง่าย ไฟเบอร์สูง ดีต่อระบบการย่อยอาหาร  </p>
+		
+        <p>รวมถึงมีแคลอรี แป้ง น้ำตาลและ ไขมันต่ำ เหมาะกับผู้ที่ต้องการคุมน้ำหนัก ยิ่งไปกว่านั้น ยังช่วยดูดซับ<br>ก๊าซคาร์บอนไดออกไซด์จากอากาศ ได้เทียบเท่ากับป่าที่สมบูรณ์ในพื้นที่ ๆ เท่ากันอีกด้วย</p>
+		<p>นับว่า "ไข่ผำ" กลายเป็นสุดยอด“ซูเปอร์ฟู้ด”เพราะอุดมไปด้วยวิตามิน แร่ธาตุ ไฟเบอร์ โปรตีน มีคุณค่า<br>ทางโภชนาการครบถ้วนสูงมากที่สุดชนิดหนึ่งของโลก อีกทั้งยังเป็นอาหารแห่งอนาคต เพราะ<br>เจริญเติบโตได้ไว ใช้ทรัพยากรการผลิตต่ำคุณภาพทางโภชนาการสูง</p>
+        
+        <h4>อ้างอิง</h4>
+		<h4>https://www.pptvhd36.com/health/food/6008</h4>
+    </div>
+
+
+<!-- Floating Button to Toggle Social Buttons -->
+<button class="toggle-social" onclick="toggleSocialButtons()">📱</button>
+
+<!-- Floating Social Media Buttons (Initially Hidden) -->
+<div class="floating-social" id="socialButtons">
+    <a href="https://m.me/YOUR_PAGE" target="_blank" class="social-btn messenger"><i class="bi bi-messenger"></i></a>
+    <a href="https://www.facebook.com/YOUR_PAGE" target="_blank" class="social-btn facebook"><i class="bi bi-facebook"></i></a>
+    <a href="https://line.me/R/YOUR_LINE_ID" target="_blank" class="social-btn line"><i class="bi bi-line"></i></a>
+    <a href="tel:0812345678" class="social-btn call"><i class="bi bi-telephone"></i></a>
+    <a href="contact.html" class="social-btn profile"><i class="bi bi-person-circle"></i></a>
+    <a href="#" class="social-btn close-btn" onclick="toggleSocialButtons()"><i class="bi bi-x-circle"></i></a>
+</div>
+    <!-- กล่องแชทบอท ปุ่มเปิดแชท -->
+    <button class="chat-toggle" id="chatToggle">💬</button>
+
+    <!-- กล่องแชท -->
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <h3>🤖 Healthy Bot</h3>
+            <button class="close-chat" id="closeChat">✖</button>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="bot-message">สวัสดี! ฉันสามารถช่วยคุณเกี่ยวกับสุขภาพได้ 😊</div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chatInput" placeholder="พิมพ์ข้อความ...">
+            <button id="sendMessage">▶</button>
+        </div>
+    </div>
+
+
+    <!-- 🔹 ปุ่มกลับไปด้านบน -->
+    <button onclick="scrollToTop()" id="backToTopBtn" class="btn btn-primary"><i class="bi bi-arrow-up"></i></button>
+<!-- 🔹 Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <!-- 🔹 คอลัมน์ที่ 1: เกี่ยวกับเรา -->
+            <div class="col-md-4">
+                <h5>เกี่ยวกับเรา</h5>
+                <p>
+				Healthy Diary เชื่อว่าสุขภาพดีไม่ได้มาจากโชค แต่จากการดูแลตัวเอง เราเลยอยากแชร์ข้อมูลสุขภาพที่เข้าใจง่าย ใช้ได้จริง
+				และสนุกไปด้วยกัน ไม่ว่าคุณจะอยากลดน้ำหนัก ฟิตหุ่น หรือแค่ดูแลตัวเอง เราพร้อมเป็นเพื่อนร่วมทาง! 💚
+                </p>
+            </div>
+
+            <!-- 🔹 คอลัมน์ที่ 2: ติดต่อเรา -->
+            <div class="col-md-4">
+                <p><strong>📍 ที่อยู่:</strong> 39 หมู่ที่ 1 ถนนรังสิต - นครนายก ตำบล คลองหก อำเภอคลองหลวง ปทุมธานี 12110</p>
+                <p><strong>📧 อีเมล:</strong> <a href="mailto:contact@healthy.com">contact@healthy.com</a></p>
+                <p><strong>☎️ โทรศัพท์:</strong> 02-8888-8888</p>
+                <p><strong>🕒 เวลาทำการ:</strong> จันทร์ - ศุกร์ | 08:00 - 18:00 น.</p>
+            </div>
+
+            <!-- 🔹 คอลัมน์ที่ 3: เมนู -->
+            <div class="col-md-4">
+                <h5>เมนู</h5>
+                <ul class="footer-links">
+                    <li><a href="index.html">หน้าแรก</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 🔹 Copyright -->
+        <div class="footer-bottom">
+            <p>© 2025 Healthy Diary. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+    <!-- 🔹 รวม JavaScript -->
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
