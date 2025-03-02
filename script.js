@@ -220,7 +220,7 @@ function scrollToTop() {
     socialButtons.style.display = (socialButtons.style.display === 'none') ? 'flex' : 'none';
    }
 // ====================================================
-// 🔹 ฟังก์ชันเลื่อนกลับไปด้านบน
+// 🔹 แชทบอท
 // ====================================================
 document.addEventListener("DOMContentLoaded", function () {
     const chatToggle = document.getElementById("chatToggle");
